@@ -55,7 +55,7 @@ const StudentSchema= new Schema({
 
 	)
 
-const Student = mongoose.model("student", StudentSchema, "student");
+const Student = mongoose.model("Students", StudentSchema, "Students");
 // The first argument is the singular name of the collection your model is for. 
 // Mongoose automatically looks for the plural, lowercased version of your model name. 
 
