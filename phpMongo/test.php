@@ -2,36 +2,18 @@
 
 require_once './vendor/autoload.php';
 
-
-  // connect to mongodb
-$client = new MongoDB\Client('mongoSRV');
-
-// foreach ($client->listDatabases() as $databaseInfo) {
-//     var_dump($databaseInfo);
-//   }
-// $db = $client->andrewdb;
-$db = $client->selectDatabase('andrewdb');
-
-$collection = $client->andrewdb->Students;
+$client = new MongoDB\Client('mongodb+srv://andrew:MDB123@cluster0.m4ieo.mongodb.net/testdb?retryWrites=true&w=majority');
+// mongodb+srv://mmdr:MDB123@cyy-9iko9.mongodb.net/testdb
+// mongodb+srv://sa:MDB123@andrew.spzdw.mongodb.net/training-db
+$db = $client->selectDatabase('testdb');
+$collection = $client->testdb->car;
 
 $cursor = $collection->find(
-    // [
-    //     'cuisine' => 'Italian',
-    //     'borough' => 'Manhattan',
-    // ],
-    // [
-    //     'limit' => 5,
-    //     'projection' => [
-    //         'name' => 1,
-    //         'borough' => 1,
-    //         'cuisine' => 1,
-    //     ],
-    // ]
+
 );
 
-foreach ($cursor as $restaurant) {
-   var_dump($restaurant);
+foreach ($cursor as $car) {
+   var_dump($car);
 };
 
-// echo "Database selected";
 ?>

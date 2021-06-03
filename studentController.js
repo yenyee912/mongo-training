@@ -1,19 +1,13 @@
 const StudentModel = require("./studentModel") //Schema
 
 exports.getAllStudent = async (req, res) => {
-	let returningFields = 'name dob'
-	
-	// req.query pass the query parameter in URL
-	// /students?fileds=name,dob
+	// let returningFields = 'name dob'
 
-	// if (req.query.fields) {
-	// 	let regex = /,/g
-	// 	returningFields = req.query.fields.replace(regex, ' ')
-	// }
+  let queries= req.query
 
+  // console.log(queries)
 
-
-	const x = await StudentModel.find({}, returningFields).sort({ id: 1 })
+  const x = await StudentModel.find().sort({ id: 1 })
 	// find: find all 
 	// sort : -1 is descending(new to old/ other sequences), 1 is ascending 
 	// sort ( {attribute you wish to sort: sequense} )  
@@ -22,7 +16,7 @@ exports.getAllStudent = async (req, res) => {
 		if (x.length > 0) {
 			// status 200 indicates the request is received, processed
 			// can simply replace with res.send(x) 
-			res.status(200).send({ data: x });
+			res.status(200).send(x);
 		}
 
 		else
